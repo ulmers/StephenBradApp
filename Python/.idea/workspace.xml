@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="91fd7aac-3ee4-4b56-ab76-0b6881d6a324" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/modelMain.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Node/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Node/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,6 +14,7 @@
     <session id="-562394831">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.opened" value="1" />
         </counts>
@@ -48,7 +48,7 @@
         <entry file="file://$PROJECT_DIR$/modelMain.py">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="37" selection-start-column="37" selection-end-column="37" />
+              <caret column="75" lean-forward="true" selection-start-column="75" selection-end-column="75" />
             </state>
           </provider>
         </entry>
@@ -135,7 +135,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25266525" />
       <window_info id="Structure" order="1" weight="0.25" />
@@ -171,7 +170,7 @@
     <entry file="file://$PROJECT_DIR$/modelMain.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="37" selection-start-column="37" selection-end-column="37" />
+          <caret column="75" lean-forward="true" selection-start-column="75" selection-end-column="75" />
         </state>
       </provider>
     </entry>
