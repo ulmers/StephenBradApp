@@ -6,6 +6,8 @@ import { ChartsModule} from 'ng2-charts';
 import { AppComponent } from './app.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { GoogleSignInComponent } from './google-sign-in/google-sign-in.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule, MatCheckboxModule, MatCardModule, MatMenuModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,12 @@ import { GoogleSignInComponent } from './google-sign-in/google-sign-in.component
   imports: [
     BrowserModule,
     HttpClientModule,
-    ChartsModule
+    ChartsModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatCardModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
