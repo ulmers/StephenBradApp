@@ -19,13 +19,8 @@ app.listen(3000, function(){
 
 // CREATE
 
-app.post('/formEntry', dataController.createFormEntry);
-
 // READ
 
-
-
 // UPDATE
-
 
 // DELETE

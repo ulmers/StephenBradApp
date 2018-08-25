@@ -1,6 +1,5 @@
-import { NgZone, Component, AfterViewInit } from '@angular/core';
-import { GoogleSignInService } from '../google-sign-in.service';
-import {  Router} from '@angular/router';
+import { NgZone, Component, HostListener, AfterViewInit } from '@angular/core';
+import { GoogleSignInService} from '../google-sign-in.service';
 
 declare var gapi: any;
 
@@ -11,7 +10,7 @@ declare var gapi: any;
 })
 export class GoogleSignInComponent implements AfterViewInit {
 
-  constructor(private router: Router, private googleSignInService: GoogleSignInService) { }
+  constructor(private zone: NgZone, private googleSignInService: GoogleSignInService) { }
 
   ngAfterViewInit() {
     this.initGapi();
@@ -36,9 +35,9 @@ export class GoogleSignInComponent implements AfterViewInit {
         client_id: '901613019984-o8frfhl694ef29lf6517c502b2o11hos',
         fetch_basic_profile: true
       }).then(() => {
-        console.log('auth2 success');
+        console.log('success');
       }, () => {
-        console.log('auth2 failure');
+        console.log('failure');
       });
 
        gapi.signin2.render('google-sign-in', {
@@ -46,15 +45,7 @@ export class GoogleSignInComponent implements AfterViewInit {
          width: 250,
          height: 50,
          longtitle: true,
-         theme: 'light',
-         onsuccess: (user) => {
-           // console.log(gapi.auth2.getAuthInstance().currentUser.get());
-           // log('id: ' + gapi.auth2.getAuthInstance().currentUser.get().getId());
-           this.router.navigate(['form']);
-         },
-         onfailure: () => {
-           console.log('sign in failure');
-         }
+         theme: 'light'
        });
     });
   }

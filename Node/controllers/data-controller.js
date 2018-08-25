@@ -1,5 +1,4 @@
 var jwt = require('jsonwebtoken');
-const exec = require('child_process').exec;
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({
@@ -27,19 +26,6 @@ function sendToken(res, package) {
 }
 
 // CREATE
-
-module.exports.createFormEntry = function(req, res) {
-
-    // TODO: Save entry to db with entry result null
-
-    // TODO: Called python child process
-
-    // TODO: Add entry result id to entry
-
-    // TODO: Send result to user
-
-
-}
 
 // READ
 module.exports.helloWorld = function(req, res) {

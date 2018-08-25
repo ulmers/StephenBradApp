@@ -1,5 +1,4 @@
 import {Component, HostListener} from '@angular/core';
-declare var gapi: any
 
 @Component({
   selector: 'app-root',
@@ -21,10 +20,5 @@ export class AppComponent {
       document.getElementById('toolbar').classList.remove('hidden');
       this.lastScrollTop = scrollY;
     }
-  }
-
-  public onSignOut() {
-    gapi.auth2.getAuthInstance().signOut();
-    console.log('signed out');
   }
 }
