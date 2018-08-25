@@ -1,12 +1,5 @@
 # This file will take input and decide what variation of the model will run
 
-# This file will take input and decide what variation of the model will run
-
-# bifurcation options: gender, sex, chronic disease
-# age   | total | male | female
-# 0-18  | 3552  | 3698 | 3399
-# 19-64 |
-
 # chronic disease yes = 8800 annual spending
 
 # TODO: organize cost data in an array instead of hardcoding individual values.
@@ -50,7 +43,7 @@ def cost_model(age, gender, chronic):
             elif age >= 85:
                 cost = malecost['85+']
             else:
-                #basically an error catch
+                # basically an error catch
                 cost = malecost['avg']
         else:
             if age <= 18:
@@ -82,7 +75,7 @@ def cost_model(age, gender, chronic):
             elif age >= 85:
                 cost = malecost['85+']
             else:
-                #basically an error catch
+                # basically an error catch
                 cost = malecost['avg']
         else:
             if age <= 18:
@@ -100,12 +93,46 @@ def cost_model(age, gender, chronic):
                 cost = femalecost['avg']
 
     print(cost)
+    return cost
 
 
 # TODO: figure out way to take an optional array of arguments
 # TODO: healthplan1 = {deductible, outofpocket, copay, premium, drugs}
 def cost_comparison(cost, healthPlans):
-    return healthPlanSelection
+    # assuming the data structure is:
+    # healthplan = {'healthplan1': {'premium1': x,
+    #                               'deductible1': y,
+    #                               'copay1': z
+    #                               'drugplan1': {<<might not be one num>>}},
+    #               'healthplan2': {etc.}}
+    for z in healthPlans.keys():
+        healthPlanKeys = []
+        healthPlanKeys.append(z)
+        print(healthPlanKeys)
+
+    outOfPocket = {}
+    i = 0
+    plans = {}
+    while i < healthPlans.__len__():
+
+        # TODO: Add calculation of final out of pocket expense based on cost and plan details
+        print(healthPlanKeys.__getitem__(i))
+
+        # How to record the cost calculations:
+        # append the final cost calculation to a new dict with name of plan as key?
+        plans.__setitem__(healthPlans[healthPlanKeys.__getitem__(i)]['name'], cost)
+        print(plans)
+
+        i = i + 1
+
+
+    print(healthPlans.__len__())
+
+    for plans,planDetails in healthPlans.items():
+        print(plans)
+        print(planDetails)
+        print(plans)
+
 
 if __name__ == '__main__':
     # TODO: Uncomment json input
@@ -120,7 +147,22 @@ if __name__ == '__main__':
     genderInput = "male"
     chronicInput = True
 
-    cost_model(ageInput, genderInput, chronicInput)
+    healthPlanInput = {'healthplan1': {'name': "Bronze",
+                                       'premium': 40,
+                                       'deductible': 2100,
+                                       'oopmax': 4200,
+                                       'copay': .1,
+                                       'drugplan': .1},
+                       'healthplan2':  {'name': "Silver",
+                                        'premium': 120,
+                                        'deductible': 1100,
+                                        'oopmax': 4200,
+                                        'copay': .1,
+                                        'drugplan': .1}}
+
+    costInput = cost_model(ageInput, genderInput, chronicInput)
+
+    cost_comparison(costInput, healthPlanInput)
 
 
 
