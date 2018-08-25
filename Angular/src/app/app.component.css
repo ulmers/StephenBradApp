@@ -1,0 +1,7 @@
+#toolbar {
+  position: fixed;
+  top: 0;
+}
+.hidden {
+  margin-top: -64px;
+}

@@ -1,4 +1,29 @@
 <!--The content below is only a placeholder and can be replaced.-->
+<mat-toolbar id="toolbar" color="primary">
+  <mat-toolbar-row>
+    <span>Stephen-Brad App</span>
+  </mat-toolbar-row>
+  <mat-toolbar-row>
 
+    <div style="position: absolute; right: 2%;">
+      <div style="display: inline;">
+        <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>Item 1</button>
+          <button mat-menu-item>Item 2</button>
+        </mat-menu>
+      </div>
+      <div style="display: inline;">
+        <button mat-button [matMenuTriggerFor]="profile">Profile</button>
+        <mat-menu #profile="matMenu">
+          <button mat-menu-item>Switch Profiles</button>
+          <button mat-menu-item>Sign Out</button>
+        </mat-menu>
+      </div>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+<div style="height: 100%; background-color: white;">
+  <app-sign-in></app-sign-in>
+</div>
 
-<app-sign-in></app-sign-in>

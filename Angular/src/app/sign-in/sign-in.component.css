@@ -1,6 +1,5 @@
 .sign-in-card {
-  margin: auto;
-  margin-top: 200px;
-  max-width: 200px;
-  max-height: 200px;
+  display: block;
+  margin: 400px auto;
+  width: 200px;
 }

@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { GoogleSignInComponent } from './google-sign-in/google-sign-in.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCheckboxModule, MatCardModule, MatMenuModule } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatCardModule, MatMenuModule, MatToolbarModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,8 @@ import { MatButtonModule, MatCheckboxModule, MatCardModule, MatMenuModule } from
     MatButtonModule,
     MatCheckboxModule,
     MatCardModule,
-    MatMenuModule
+    MatMenuModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
