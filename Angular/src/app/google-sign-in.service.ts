@@ -8,16 +8,4 @@ import {isNull} from 'util';
 export class GoogleSignInService {
 
   constructor() { }
-
-  signIn(gapi): void {
-
-    console.log('sign in');
-
-    gapi.auth2.getAuthInstance().signIn({
-      scope: 'email profile',
-      prompt: 'content'
-    }).then();
-  }
-
-
 }

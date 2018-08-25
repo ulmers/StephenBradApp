@@ -39,28 +39,15 @@ export class GoogleSignInComponent implements AfterViewInit {
       }, () => {
         console.log('failure');
       });
+
+       gapi.signin2.render('google-sign-in', {
+         scope: 'email',
+         width: 250,
+         height: 50,
+         longtitle: true,
+         theme: 'light'
+       });
     });
-  }
-
-  @HostListener('mouseenter') onMouseEnter() {
-    document.getElementById('googleSignInImage').setAttribute('src', '/assets/btn_google_signin_light_focus_web.png');
-  }
-
-  @HostListener('mouseleave') onMouseLeave() {
-    document.getElementById('googleSignInImage').setAttribute('src', '/assets/btn_google_signin_light_normal_web.png');
-  }
-
-  @HostListener('mousedown') onMouseDown() {
-    document.getElementById('googleSignInImage').setAttribute('src', '/assets/btn_google_signin_light_pressed_web.png');
-  }
-
-  @HostListener('mouseup') onMouseUp() {
-    document.getElementById('googleSignInImage').setAttribute('src', '/assets/btn_google_signin_light_focus_web.png');
-  }
-
-  @HostListener('click') onClick() {
-
-    gapi.auth2.getAuthInstance().signIn();
   }
 
 }
