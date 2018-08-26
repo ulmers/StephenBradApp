@@ -12,7 +12,6 @@ import sys
 
 def cost_model(age, gender, chronic):
     cost = 0
-
     # TODO: Could just store this in  a json file
     malecost = {'<18': 4955,
                 '19-44': 4492,
@@ -61,7 +60,6 @@ def cost_model(age, gender, chronic):
                 cost = femalecost['avg']
 
         cost = cost + chronicaddition
-
     else:
         if gender == "male":
             if age <= 18:
@@ -91,48 +89,54 @@ def cost_model(age, gender, chronic):
             else:
                 # basically an error catch
                 cost = femalecost['avg']
-
-    print(cost)
+    print("Total Cost:", cost)
     return cost
 
 
 # TODO: figure out way to take an optional array of arguments
 # TODO: healthplan1 = {deductible, outofpocket, copay, premium, drugs}
-def cost_comparison(cost, healthPlans):
+def cost_comparison(cost, healthplans):
     # assuming the data structure is:
     # healthplan = {'healthplan1': {'premium1': x,
     #                               'deductible1': y,
     #                               'copay1': z
     #                               'drugplan1': {<<might not be one num>>}},
     #               'healthplan2': {etc.}}
-    for z in healthPlans.keys():
-        healthPlanKeys = []
+    healthPlanKeys = []
+    for z in healthplans.keys():
         healthPlanKeys.append(z)
-        print(healthPlanKeys)
 
     outOfPocket = {}
+    planCost = 0
     i = 0
-    plans = {}
-    while i < healthPlans.__len__():
+    while i < healthplans.__len__():
 
         # TODO: Add calculation of final out of pocket expense based on cost and plan details
-        print(healthPlanKeys.__getitem__(i))
+        healthPlanNum = healthPlanKeys.__getitem__(i)
+        planName = healthplans[healthPlanNum]['name']
+        planDeductible = healthplans[healthPlanNum]['deductible']
+        planoopmax = healthplans[healthPlanNum]['oopmax']
+        planPremium = healthplans[healthPlanNum]['premium']
+        planCopay = healthplans[healthPlanNum]['copay']
+        planDrugPlan = healthplans[healthPlanNum]['drugplan']
+
+        annualPremium = planPremium*12
+        medicalExpense = cost - annualPremium
+
+        if medicalExpense > planDeductible:
+            planCost = annualPremium + planDeductible + \
+                       ((medicalExpense-planDeductible)*planCopay) + \
+                       ((medicalExpense-planDeductible)*planDrugPlan)
+        else:
+            planCost = cost
 
         # How to record the cost calculations:
         # append the final cost calculation to a new dict with name of plan as key?
-        plans.__setitem__(healthPlans[healthPlanKeys.__getitem__(i)]['name'], cost)
-        print(plans)
-
+        outOfPocket.__setitem__(planName, planCost)
         i = i + 1
 
-
-    print(healthPlans.__len__())
-
-    for plans,planDetails in healthPlans.items():
-        print(plans)
-        print(planDetails)
-        print(plans)
-
+    print("Out of Pocket Cost:", outOfPocket)
+    return outOfPocket
 
 if __name__ == '__main__':
     # TODO: Uncomment json input
@@ -152,13 +156,13 @@ if __name__ == '__main__':
                                        'deductible': 2100,
                                        'oopmax': 4200,
                                        'copay': .1,
-                                       'drugplan': .1},
+                                       'drugplan': .16},
                        'healthplan2':  {'name': "Silver",
                                         'premium': 120,
                                         'deductible': 1100,
                                         'oopmax': 4200,
                                         'copay': .1,
-                                        'drugplan': .1}}
+                                        'drugplan': .16}}
 
     costInput = cost_model(ageInput, genderInput, chronicInput)
 
