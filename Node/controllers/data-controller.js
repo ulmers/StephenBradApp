@@ -27,6 +27,7 @@ function sendToken(res, package) {
 
 // CREATE
 
+
 // READ
 module.exports.helloWorld = function(req, res) {
     res.send('Hello World!');
@@ -34,4 +35,4 @@ module.exports.helloWorld = function(req, res) {
 
 // UPDATE
 
-// Delete
+// DELETE

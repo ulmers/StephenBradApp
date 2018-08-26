@@ -1,0 +1,57 @@
+<div class="form-container">
+  <div class="form">
+    <mat-expansion-panel class="form-section" [expanded]="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Basic Demographics
+        </mat-panel-title>
+        <mat-panel-description>
+          Educational stuff...?
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field>
+        <mat-select class="form-input" placeholder="Sex">
+          <mat-option *ngFor="let sex of sexes" [value]="sex.value">
+            {{sex.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Choose a date" mask="00/00/0000">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+      </mat-form-field>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="form-section" [expanded]="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Health Plans
+        </mat-panel-title>
+        <mat-panel-description>
+          Educational stuff...?
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field>
+        <input matInput type="number" placeholder="Annual Premium" >
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput type="number" placeholder="Deductible">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput type="number" placeholder="Out Of Pocket Maximum">
+      </mat-form-field>
+    </mat-expansion-panel>
+  </div>
+  <div class="form-stepper">
+    <mat-vertical-stepper>
+      <mat-step></mat-step>
+      <mat-step></mat-step>
+    </mat-vertical-stepper>
+  </div>
+</div>
+
+
