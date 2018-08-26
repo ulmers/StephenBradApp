@@ -1,14 +1,10 @@
 # This file will take input and decide what variation of the model will run
 
 # chronic disease yes = 8800 annual spending
-
-# TODO: organize cost data in an array instead of hardcoding individual values.
-# TODO: add logic to the model
+# TODO: Need to consider the best calculation model, easy change
 
 import json
 import sys
-
-
 
 def cost_model(age, gender, chronic):
     cost = 0
@@ -92,9 +88,6 @@ def cost_model(age, gender, chronic):
     print("Total Cost:", cost)
     return cost
 
-
-# TODO: figure out way to take an optional array of arguments
-# TODO: healthplan1 = {deductible, outofpocket, copay, premium, drugs}
 def cost_comparison(cost, healthplans):
     # assuming the data structure is:
     # healthplan = {'healthplan1': {'premium1': x,
@@ -110,8 +103,6 @@ def cost_comparison(cost, healthplans):
     planCost = 0
     i = 0
     while i < healthplans.__len__():
-
-        # TODO: Add calculation of final out of pocket expense based on cost and plan details
         healthPlanNum = healthPlanKeys.__getitem__(i)
         planName = healthplans[healthPlanNum]['name']
         planDeductible = healthplans[healthPlanNum]['deductible']
@@ -123,6 +114,7 @@ def cost_comparison(cost, healthplans):
         annualPremium = planPremium*12
         medicalExpense = cost - annualPremium
 
+        # If its less than the deducitble then the cost is the cost
         if medicalExpense > planDeductible:
             planCost = annualPremium + planDeductible + \
                        ((medicalExpense-planDeductible)*planCopay) + \
