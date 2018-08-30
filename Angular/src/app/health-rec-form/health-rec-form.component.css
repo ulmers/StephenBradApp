@@ -26,3 +26,13 @@
 .form-input {
   margin-left: 20px;
 }
+
+.healthPlan {
+  display: inline;
+}
+
+.healthPlan > button {
+  position: relative;
+  margin-right: 0;
+  right: 0;
+}

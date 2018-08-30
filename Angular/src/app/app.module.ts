@@ -7,11 +7,12 @@ import { AppComponent } from './app.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { GoogleSignInComponent } from './google-sign-in/google-sign-in.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatSelectModule } from '@angular/material';
-import { MatDatepickerModule, MatNativeDateModule, MatOptionModule, MatExpansionModule, MatInputModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatSelectModule, MatCheckboxModule} from '@angular/material';
+import { MatDatepickerModule, MatNativeDateModule, MatOptionModule, MatExpansionModule, MatInputModule, MatDividerModule} from '@angular/material';
 import { MatStepperModule } from '@angular/material';
 import { HealthRecFormComponent } from './health-rec-form/health-rec-form.component';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 const routes = [
   { path: '', component: SignInComponent},
@@ -41,6 +42,9 @@ const routes = [
     MatNativeDateModule,
     MatInputModule,
     MatStepperModule,
+    MatDividerModule,
+    MatCheckboxModule,
+    FormsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],

@@ -1,8 +1,11 @@
 const bodyparser = require('body-parser');
 const jst        = require('jsonwebtoken');
 const express    = require('express');
+const cors       = require('cors');
 
 var app = express();
+
+app.use(cors());
 
 // Controllers
 var dataController = require('./controllers/data-controller.js');
@@ -18,6 +21,8 @@ app.listen(3000, function(){
 // ROUTER
 
 // CREATE
+
+app.post('/formEntry', dataController.postFormEntry);
 
 // READ
 
