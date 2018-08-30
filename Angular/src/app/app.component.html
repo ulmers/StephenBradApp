@@ -9,7 +9,7 @@
       <div style="display: inline;">
         <button mat-button [matMenuTriggerFor]="menu">Menu</button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item>Item 1</button>
+          <button routerLink="/health-rec-form" mat-menu-item>Health Plan Recommendation</button>
           <button mat-menu-item>Item 2</button>
         </mat-menu>
       </div>
@@ -23,7 +23,4 @@
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
-<div style="height: 100%; background-color: white;">
-  <app-sign-in></app-sign-in>
-</div>
-
+<router-outlet></router-outlet>

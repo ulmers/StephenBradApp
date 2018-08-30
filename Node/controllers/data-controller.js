@@ -1,4 +1,5 @@
 var jwt = require('jsonwebtoken');
+var exec = require('child_process').exec;
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({
@@ -27,6 +28,23 @@ function sendToken(res, package) {
 
 // CREATE
 
+module.exports.postFormEntry = function(req, res) {
+    console.log(req.body);
+
+    var formEntryJSON = req.body;
+
+    // TODO: add formEntry to db
+
+    // TODO: run through python
+    exec('python ../Python/modelMain ' + formEntryJSON, (err, stdout, stderr) => {
+        console.log(stdout);
+    })
+
+    // TODO: add result to db
+
+    // TODO: send result to user
+}
+
 // READ
 module.exports.helloWorld = function(req, res) {
     res.send('Hello World!');
@@ -34,4 +52,4 @@ module.exports.helloWorld = function(req, res) {
 
 // UPDATE
 
-// Delete
+// DELETE

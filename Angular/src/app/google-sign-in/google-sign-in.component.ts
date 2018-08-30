@@ -1,5 +1,6 @@
-import { NgZone, Component, HostListener, AfterViewInit } from '@angular/core';
+import { NgZone, Component, AfterViewInit } from '@angular/core';
 import { GoogleSignInService} from '../google-sign-in.service';
+import { Router } from '@angular/router';
 
 declare var gapi: any;
 
@@ -10,7 +11,7 @@ declare var gapi: any;
 })
 export class GoogleSignInComponent implements AfterViewInit {
 
-  constructor(private zone: NgZone, private googleSignInService: GoogleSignInService) { }
+  constructor(private router: Router, private googleSignInService: GoogleSignInService) { }
 
   ngAfterViewInit() {
     this.initGapi();
@@ -45,7 +46,10 @@ export class GoogleSignInComponent implements AfterViewInit {
          width: 250,
          height: 50,
          longtitle: true,
-         theme: 'light'
+         theme: 'light',
+         onsuccess: (user => {
+            this.router.navigate(['/health-rec-form']);
+         })
        });
     });
   }

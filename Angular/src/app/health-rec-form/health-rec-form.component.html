@@ -1,0 +1,80 @@
+<div class="form-container">
+  <div class="form">
+    <mat-expansion-panel class="form-section" [expanded]="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Basic Demographics
+        </mat-panel-title>
+        <mat-panel-description>
+          Educational stuff...?
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field>
+        <mat-select id="sex" class="form-input" placeholder="Sex" [(ngModel)]="formEntry.sex">
+          <mat-option *ngFor="let sex of sexes" [value]="sex.value">
+            {{sex.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input id="birthDate" matInput [matDatepicker]="picker" placeholder="Date of Birth" [(ngModel)]="formEntry.birthDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+      </mat-form-field>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="form-section" [expanded]="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Health Plans
+        </mat-panel-title>
+        <mat-panel-description>
+          Educational stuff...?
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="healthPlan" *ngFor="let healthPlan of formEntry.healthPlans">
+        <mat-form-field id="name">
+          <input matInput placeholder="Health Plan Name" [(ngModel)]="healthPlan.name">
+        </mat-form-field>
+        <br>
+        <mat-form-field id="annualPremium">
+          <input matInput type="number" placeholder="Annual Premium" [(ngModel)]="healthPlan.annualPremium">
+        </mat-form-field>
+
+        <br>
+        <mat-form-field id="deductible">
+          <input matInput type="number" placeholder="Deductible" [(ngModel)]="healthPlan.deductible">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput type="number" placeholder="Out Of Pocket Maximum" [(ngModel)]="healthPlan.outOfPocketMaximum">
+        </mat-form-field>
+        <button *ngIf="!(formEntry.healthPlans.length === 1)" color="warn" (click)="onClickRemoveHealthPlan(healthPlan)" mat-stroked-button>Remove</button>
+        <mat-divider style="margin: 5px;"></mat-divider>
+      </div>
+      <button color="primary" style="margin: 5px;" (click)="onClickAddHealthPlan()" mat-raised-button>Add Health Plan</button>
+    </mat-expansion-panel>
+    <mat-expansion-panel class="form-section" [expanded]="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Other
+        </mat-panel-title>
+        <mat-panel-description>
+          Educational stuff...?
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+        <mat-checkbox id="chronicIllness" [(ngModel)]="formEntry.hasChronicDisease">Chronic Illness</mat-checkbox>
+    </mat-expansion-panel>
+
+    <button (click)="onClickSubmitButton()" mat-raised-button>Submit</button>
+  </div>
+  <div class="form-stepper">
+    <mat-vertical-stepper>
+      <mat-step></mat-step>
+      <mat-step></mat-step>
+    </mat-vertical-stepper>
+  </div>
+</div>
+
+
