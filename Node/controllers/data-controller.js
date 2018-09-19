@@ -1,15 +1,9 @@
-var jwt = require('jsonwebtoken');
-var exec = require('child_process').exec;
-var mysql = require('mysql');
+const jwt      = require('jsonwebtoken');
+const exec     = require('child_process').exec;
+const mongoose = require('mongoose');
 
-var connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'StephenBrad2018!',
-    database: 'test'
-})
+mongoose.connect('mongodb://localhost/dev');
 
-connection.connect();
 
 function sendToken(res, package) {
 
@@ -36,14 +30,19 @@ module.exports.postFormEntry = function(req, res) {
     // TODO: add formEntry to db
 
     // TODO: run through python
-    exec('python ../Python/modelMain ' + formEntryJSON, (err, stdout, stderr) => {
+
+    exec('python ../Python/modelMain.py ' + formEntryJSON, (err, stdout, stderr) => {
         console.log(stdout);
+
+        // TODO: add result to db
+
+        // TODO: send result to user
+
+        res.send()
     })
 
-    // TODO: add result to db
 
-    // TODO: send result to user
-}
+};
 
 // READ
 module.exports.helloWorld = function(req, res) {

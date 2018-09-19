@@ -1,4 +1,6 @@
 import {Component, HostListener} from '@angular/core';
+import { GoogleSignInService } from './google-sign-in.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +12,8 @@ export class AppComponent {
 
   lastScrollTop = 0;
 
+  constructor(private router: Router, private googleSignInService: GoogleSignInService) { }
+
   @HostListener('window:scroll') onScroll() {
     const scrollY = window.scrollY;
 
@@ -20,5 +24,21 @@ export class AppComponent {
       document.getElementById('toolbar').classList.remove('hidden');
       this.lastScrollTop = scrollY;
     }
+  }
+
+  public getUserName(): string {
+    if(this.googleSignInService.getUsername()) {
+      return 'Profile';
+    }
+    return this.googleSignInService.getUsername();
+  }
+
+  public isLoggedIn(): boolean {
+    return this.googleSignInService.isLoggedIn();
+  }
+
+  public signOut() {
+    this.googleSignInService.signOut();
+    this.router.navigate(['/']);
   }
 }

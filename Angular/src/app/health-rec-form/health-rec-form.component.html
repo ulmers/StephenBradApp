@@ -12,8 +12,8 @@
       <mat-form-field>
         <mat-select id="sex" class="form-input" placeholder="Sex" [(ngModel)]="formEntry.sex">
           <mat-option *ngFor="let sex of sexes" [value]="sex.value">
-            {{sex.viewValue}}
-          </mat-option>
+          {{sex.viewValue}}
+        </mat-option>
         </mat-select>
       </mat-form-field>
       <br>
@@ -55,6 +55,7 @@
       </div>
       <button color="primary" style="margin: 5px;" (click)="onClickAddHealthPlan()" mat-raised-button>Add Health Plan</button>
     </mat-expansion-panel>
+
     <mat-expansion-panel class="form-section" [expanded]="true">
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -67,7 +68,7 @@
         <mat-checkbox id="chronicIllness" [(ngModel)]="formEntry.hasChronicDisease">Chronic Illness</mat-checkbox>
     </mat-expansion-panel>
 
-    <button (click)="onClickSubmitButton()" mat-raised-button>Submit</button>
+    <button id="submitButton" (click)="onClickSubmitButton()" color="primary" mat-raised-button>Submit</button>
   </div>
   <div class="form-stepper">
     <mat-vertical-stepper>

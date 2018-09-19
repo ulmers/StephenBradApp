@@ -14,10 +14,10 @@
         </mat-menu>
       </div>
       <div style="display: inline;">
-        <button mat-button [matMenuTriggerFor]="profile">Profile</button>
+        <button mat-button [matMenuTriggerFor]="profile" [value]="getUserName()">Profile</button>
         <mat-menu #profile="matMenu">
           <button mat-menu-item>Switch Profiles</button>
-          <button mat-menu-item>Sign Out</button>
+          <button mat-menu-item (click)="signOut()">Sign Out</button>
         </mat-menu>
       </div>
     </div>

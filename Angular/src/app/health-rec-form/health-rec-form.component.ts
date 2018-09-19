@@ -24,7 +24,6 @@ export class HealthRecFormComponent implements OnInit {
     {value: 'male', viewValue: 'Male'},
     {value: 'female', viewValue: 'Female'}
   ];
-
   startDate = new Date(1900, 0, 1);
 
   constructor(private formEntryService: FormEntryService) { }
