@@ -6,7 +6,7 @@ module.exports = mongoose.model('FormEntry', {
     userId: String,
     formName: String,
     birthdate: String,
-    sex: boolean,
+    sex: Boolean,
     healthPlans: _id,
-    hasChronicDisease: boolean
+    hasChronicDisease: Boolean
 });
