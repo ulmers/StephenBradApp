@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/dev');
 
+var User = require('../models/User.js');
+var FormEntry = require('../models/FormEntry.js');
 
 function sendToken(res, package) {
 
@@ -28,6 +30,23 @@ module.exports.postFormEntry = function(req, res) {
     var formEntryJSON = req.body;
 
     // TODO: add formEntry to db
+
+    var formEntry = new FormEntry({
+        userId: formEntryJSON.userId,
+        formName: formEntryJSON.formName,
+        birthDate: formEntryJSON.birthDate,
+        isMale: formEntryJSON.isMale,
+        healthPlans: formEntryJSON.healthPlans,
+        hasChronicDisease: formEntryJSON.hasChronicDisease
+    });
+
+    formEntry.save(function(err) {
+        if(err) {
+            res.status(500).send('Error: ' + err.toString());
+        }
+
+
+    });
 
     // TODO: run through python
 

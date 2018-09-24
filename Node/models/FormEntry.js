@@ -1,12 +1,20 @@
 const mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 mongoose.Promise = global.Promise;
 
-module.exports = mongoose.model('FormEntry', {
+var formEntrySchema = new Schema({
     userId: String,
     formName: String,
-    birthdate: String,
-    sex: Boolean,
-    healthPlans: _id,
+    birthDate: String,//YYYYMMDD
+    isMale: Boolean,
+    healthPlans: [{
+        name: String,
+        deductible: Number,
+        annualPremium: Number,
+        outOfPocketMaximum: Number
+    }],
     hasChronicDisease: Boolean
 });
+
+module.exports = mongoose.model('FormEntry', formEntrySchema);
