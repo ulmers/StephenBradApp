@@ -29,8 +29,6 @@ module.exports.postFormEntry = function(req, res) {
 
     var formEntryJSON = req.body;
 
-    // TODO: add formEntry to db
-
     var formEntry = new FormEntry({
         userId: formEntryJSON.userId,
         formName: formEntryJSON.formName,
