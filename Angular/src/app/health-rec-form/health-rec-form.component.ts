@@ -3,6 +3,7 @@ import { FormEntryService } from '../form-entry.service';
 import {FormEntry} from '../form-entry';
 import {HttpErrorResponse} from '@angular/common/http';
 import {HealthPlan} from '../health-plan';
+import {GoogleSignInService} from '../google-sign-in.service';
 
 export interface Sex {
   value: string;
@@ -26,7 +27,7 @@ export class HealthRecFormComponent implements OnInit {
   ];
   startDate = new Date(1900, 0, 1);
 
-  constructor(private formEntryService: FormEntryService) { }
+  constructor(private formEntryService: FormEntryService, private googleSignInService: GoogleSignInService) { }
 
   ngOnInit() {
     // @ts-ignore
@@ -52,7 +53,7 @@ export class HealthRecFormComponent implements OnInit {
   public postFormEntry(): void {
 
     // TODO gapi userId
-    // this.formEntry.userId = googleSignInService.getUserId();
+    this.formEntry.userId = this.googleSignInService.getUserId();
 
     this.formEntryService.postFormEntry(this.formEntry).subscribe(resp => {
       const keys = resp.headers.keys();

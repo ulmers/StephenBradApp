@@ -12,7 +12,7 @@ export class GoogleSignInComponent implements OnInit {
   constructor(private router: Router, private googleSignInService: GoogleSignInService) { }
 
   ngOnInit() {
-    
+
     const render = this.googleSignInService.renderSignIn;
 
     // @ts-ignore
