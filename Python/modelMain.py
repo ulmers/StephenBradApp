@@ -89,32 +89,22 @@ def cost_model(age, gender, chronic):
     return cost
 
 def cost_comparison(cost, healthplans):
-    # assuming the data structure is:
-    # healthplan = {'healthplan1': {'premium1': x,
-    #                               'deductible1': y,
-    #                               'copay1': z
-    #                               'drugplan1': {<<might not be one num>>}},
-    #               'healthplan2': {etc.}}
-    healthPlanKeys = []
-    for z in healthplans.keys():
-        healthPlanKeys.append(z)
 
     outOfPocket = {}
     planCost = 0
-    i = 0
-    while i < healthplans.__len__():
-        healthPlanNum = healthPlanKeys.__getitem__(i)
-        planName = healthplans[healthPlanNum]['name']
-        planDeductible = healthplans[healthPlanNum]['deductible']
-        planoopmax = healthplans[healthPlanNum]['oopmax']
-        planPremium = healthplans[healthPlanNum]['premium']
-        planCopay = healthplans[healthPlanNum]['copay']
-        planDrugPlan = healthplans[healthPlanNum]['drugplan']
+
+    healthPlan = []
+    for healthPlan in healthplans:
+        planName = healthPlan['name']
+        planDeductible = healthPlan['deductible']
+        planOOPMax = healthPlan['oopmax']
+        planPremium = healthPlan['premium']
+        planCopay = healthPlan['copay']
+        planDrugPlan = healthPlan['drugplan']
 
         annualPremium = planPremium*12
         medicalExpense = cost - annualPremium
 
-        # If its less than the deducitble then the cost is the cost
         if medicalExpense > planDeductible:
             planCost = annualPremium + planDeductible + \
                        ((medicalExpense-planDeductible)*planCopay) + \
@@ -125,7 +115,11 @@ def cost_comparison(cost, healthplans):
         # How to record the cost calculations:
         # append the final cost calculation to a new dict with name of plan as key?
         outOfPocket.__setitem__(planName, planCost)
-        i = i + 1
+
+    result = {}
+    for result in outOfPocket:
+
+
 
     print("Out of Pocket Cost:", outOfPocket)
     return outOfPocket
@@ -143,18 +137,18 @@ if __name__ == '__main__':
     genderInput = "male"
     chronicInput = True
 
-    healthPlanInput = {'healthplan1': {'name': "Bronze",
-                                       'premium': 40,
-                                       'deductible': 2100,
-                                       'oopmax': 4200,
-                                       'copay': .1,
-                                       'drugplan': .16},
-                       'healthplan2':  {'name': "Silver",
-                                        'premium': 120,
-                                        'deductible': 1100,
-                                        'oopmax': 4200,
-                                        'copay': .1,
-                                        'drugplan': .16}}
+    healthPlanInput = [{'name': "Bronze",
+                        'premium': 40,
+                        'deductible': 2100,
+                        'oopmax': 4200,
+                        'copay': .1,
+                        'drugplan': .16},
+                       {'name': "Silver",
+                        'premium': 120,
+                        'deductible': 1100,
+                        'oopmax': 4200,
+                        'copay': .1,
+                        'drugplan': .16}]
 
     costInput = cost_model(ageInput, genderInput, chronicInput)
 
