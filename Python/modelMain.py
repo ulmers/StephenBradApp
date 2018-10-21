@@ -143,18 +143,18 @@ if __name__ == '__main__':
     genderInput = "male"
     chronicInput = True
 
-    healthPlanInput = {'healthplan1': {'name': "Bronze",
-                                       'premium': 40,
-                                       'deductible': 2100,
-                                       'oopmax': 4200,
-                                       'copay': .1,
-                                       'drugplan': .16},
-                       'healthplan2':  {'name': "Silver",
-                                        'premium': 120,
-                                        'deductible': 1100,
-                                        'oopmax': 4200,
-                                        'copay': .1,
-                                        'drugplan': .16}}
+    healthPlanInput = {{'name': "Bronze",
+                       'premium': 40,
+                       'deductible': 2100,
+                       'oopmax': 4200,
+                       'copay': .1,
+                       'drugplan': .16},
+                       {'name': "Silver",
+                        'premium': 120,
+                        'deductible': 1100,
+                        'oopmax': 4200,
+                        'copay': .1,
+                        'drugplan': .16}}
 
     costInput = cost_model(ageInput, genderInput, chronicInput)
 

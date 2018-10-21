@@ -5,7 +5,8 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/dev');
 
 var User = require('../models/User.js');
-var FormEntry = require('../models/FormEntry.js');
+var HealthInsuranceRecFormEntry = require('../models/HealthInsuranceRecFormEntry.js');
+var HealthInsuranceRecFormResult = require('../models/HealthInsuranceRecFormResult');
 
 function sendToken(res, package) {
 
@@ -24,7 +25,7 @@ function sendToken(res, package) {
 
 // CREATE
 
-module.exports.postFormEntry = function(req, res) {
+module.exports.postHeathInsuranceRecFormEntry = function(req, res) {
     console.log(req.body);
 
     var formEntryJSON = req.body;
@@ -43,22 +44,20 @@ module.exports.postFormEntry = function(req, res) {
             res.status(500).send('Error: ' + err.toString());
         }
 
+        exec('python ../Python/modelMain.py ' + formEntryJSON, (err, stdout, stderr) => {
 
+            if(stderr)
+                res.status(500).send('Error: ' + err.toString());
+
+            console.log(stdout);
+
+            // TODO: add result to db
+
+            // TODO: send result to user
+
+            res.send()
+        })
     });
-
-    // TODO: run through python
-
-    exec('python ../Python/modelMain.py ' + formEntryJSON, (err, stdout, stderr) => {
-        console.log(stdout);
-
-        // TODO: add result to db
-
-        // TODO: send result to user
-
-        res.send()
-    })
-
-
 };
 
 // READ

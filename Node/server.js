@@ -22,7 +22,7 @@ app.listen(3000, function(){
 
 // CREATE
 
-app.post('/formEntry', dataController.postFormEntry);
+app.post('/formEntry', dataController.postHeathInsuranceRecFormEntry);
 
 // READ
 

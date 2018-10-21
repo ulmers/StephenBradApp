@@ -3,9 +3,8 @@ var Schema = mongoose.Schema;
 
 mongoose.Promise = global.Promise;
 
-var formEntrySchema = new Schema({
+var healthInsuranceRecFormEntrySchema = new Schema({
     userId: String,
-    formName: String,
     birthDate: String,//YYYYMMDD
     isMale: Boolean,
     healthPlans: [{
@@ -14,7 +13,8 @@ var formEntrySchema = new Schema({
         annualPremium: Number,
         outOfPocketMaximum: Number
     }],
-    hasChronicDisease: Boolean
+    hasChronicDisease: Boolean,
+    result_id: _id
 });
 
-module.exports = mongoose.model('FormEntry', formEntrySchema);
+module.exports = mongoose.model('HealthInsuranceRecFormEntry', healthInsuranceRecFormEntrySchema);
